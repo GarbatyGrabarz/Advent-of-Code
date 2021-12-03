@@ -1,7 +1,7 @@
 import pandas
 
 # Loading input
-with open(r'input1.txt', 'r') as file:
+with open(r'inputs/input1.txt', 'r') as file:
     input = file.readlines()
 
 sonar_data = pandas.DataFrame(input, columns=['depth'])
@@ -11,6 +11,7 @@ del input
 # Puzzle 1
 sonar_data['delta'] = sonar_data.depth.diff()
 depth_increase = sonar_data.delta[sonar_data.delta > 0].count()
+print(f'The answer of part 1 is: {depth_increase}')
 
 # Puzzle 2
 window = 3
@@ -19,3 +20,4 @@ sonar_data['window_sum'] = sonar_data.depth.rolling(window=indexer).sum()
 
 sonar_data['delta_w'] = sonar_data.window_sum.diff()
 depth_inc_improved = sonar_data.delta_w[sonar_data.delta_w > 0].count()
+print(f'The answer of part 2 is: {depth_inc_improved}')
