@@ -4,6 +4,8 @@ import pandas
 with open(r'inputs/input3.txt', 'r') as file:
     input = file.readlines()
 
+""" Loading each bit to a separate column of a dataframe is a bit crazy.
+Perhaps a regular loops would be suficient """
 inn = [list(x.replace('\n', '')) for x in input]
 diagnostic_report = pandas.DataFrame(inn)
 diagnostic_report = diagnostic_report.astype(int)
@@ -39,6 +41,10 @@ co2 = diagnostic_report.copy()
 
 
 def find_bit_value(report, bit_type):
+    """ This feels like an overcomplicated solution.
+    Since I opperate on logical values there must be a beter way.
+    I should come back to this after some years
+    and imprement something more elegant """
     for col in report.columns:
         allbits = len(report)
         if allbits == 1:
