@@ -1,7 +1,9 @@
+""" Running diagnostics """
+
 import pandas
 
 # Loading input
-with open(r'inputs/input3.txt', 'r') as file:
+with open(r'inputs/input3', 'r') as file:
     input = file.readlines()
 
 """ Loading each bit to a separate column of a dataframe is a bit crazy.

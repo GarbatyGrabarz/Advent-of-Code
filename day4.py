@@ -1,3 +1,5 @@
+""" Playing bingo with a squid """
+
 import pandas
 import numpy
 from itertools import count
@@ -42,13 +44,13 @@ class bingo_module(object):
                 break
 
 
-with open('Inputs/input4num.txt', 'r') as input_file:
+with open('Inputs/input4num', 'r') as input_file:
     lucky_numbers = input_file.readlines()
 lucky_numbers = lucky_numbers[0].split(',')
 lucky_numbers = [int(x) for x in lucky_numbers]
 
 # Load boards
-with open('Inputs/input4brd.txt', 'r') as input_file:
+with open('Inputs/input4brd', 'r') as input_file:
     bingo_lines = input_file.readlines()
 bingo_lines = [ln.replace('\n', '') for ln in bingo_lines if ln != '\n']
 

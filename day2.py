@@ -1,3 +1,5 @@
+""" Navigating the submarine """
+
 import pandas
 
 
@@ -60,7 +62,7 @@ class submarine_mkII(submarine):
 
 
 instructions = pandas.read_csv(
-    r'inputs/input2.txt',
+    r'inputs/input2',
     names=['command', 'value'],
     delimiter=' ')
 
