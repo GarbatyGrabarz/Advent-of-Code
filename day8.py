@@ -23,44 +23,56 @@ for line in displayed_digits:
         dl = len(encoded_digit)
         if dl == 2 or dl == 3 or dl == 4 or dl == 7:
             dig1478 += 1
-
 print(f'There are {dig1478} instances of digits 1, 4, 7 or 8')
 
-test_signal = signal[-1]
-# This should be in (for line in displayed_digits:) loop
+############################################################################
 digit = dict()
 digit['235'] = set()
 digit['069'] = set()
 segment = dict()
 
-# Find basic numbers
-for encoded_digit in test_signal:
-    dl = len(encoded_digit)
-    if dl == 2:
-        digit[1] = set(encoded_digit)
-        dig1478 += 1
+line = signal[-1]
 
-    elif dl == 3:
-        digit[7] = set(encoded_digit)
-        dig1478 += 1
+if True:
+# for line in signal:
+    for encoded_digit in line:
+        dl = len(encoded_digit)
+        if dl == 2:
+            digit[1] = set(encoded_digit)
+            dig1478 += 1
 
-    elif dl == 4:
-        digit[4] = set(encoded_digit)
-        dig1478 += 1
+        elif dl == 3:
+            digit[7] = set(encoded_digit)
+            dig1478 += 1
 
-    elif dl == 7:
-        digit[8] = set(encoded_digit)
-        dig1478 += 1
+        elif dl == 4:
+            digit[4] = set(encoded_digit)
+            dig1478 += 1
 
-segment['up'] = digit[7] - digit[1]
+        elif dl == 7:
+            digit[8] = set(encoded_digit)
+            dig1478 += 1
 
-# Find crucial segments
-for encoded_digit in test_signal:
-    dl = len(encoded_digit)
-    if dl == 6:
-        s = (digit[8] - set(encoded_digit)) & digit[1]
-        if s != 0:
-            segment['ur'] = s
+if True:
+    for encoded_digit in line:
+        dl = len(encoded_digit)
+        if dl == 6:
+            s = (digit[8] - set(encoded_digit)) & digit[1]
+            if len(s) == 1:
+                segment['ur'] = s
+
+        elif dl == 5:
+            s = ((digit[8] - set(encoded_digit)) - digit[1]) & digit[4]
+            if len(s) == 1:
+                segment['ul'] = s
+
+    segment['up'] = digit[7] - digit[1]
+    segment['dr'] = (digit[7] & digit[4] & digit[1]) - segment['ur']
+    segment['mid'] = digit[4] - digit[1] - segment['ul']
+
+    segment['dl'] = digit[8] - digit[4] - segment['up'] - segment['down']
+    segment['down'] =  digit[8] - digit[4] - segment['up'] - segment['dl']
+
 
 # for encoded_digit in test_signal:
 #     dl = len(encoded_digit)
