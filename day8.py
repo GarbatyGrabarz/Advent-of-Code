@@ -25,3 +25,49 @@ for line in displayed_digits:
             dig1478 += 1
 
 print(f'There are {dig1478} instances of digits 1, 4, 7 or 8')
+
+test_signal = signal[-1]
+# This should be in (for line in displayed_digits:) loop
+digit = dict()
+digit['235'] = set()
+digit['069'] = set()
+segment = dict()
+
+# Find basic numbers
+for encoded_digit in test_signal:
+    dl = len(encoded_digit)
+    if dl == 2:
+        digit[1] = set(encoded_digit)
+        dig1478 += 1
+
+    elif dl == 3:
+        digit[7] = set(encoded_digit)
+        dig1478 += 1
+
+    elif dl == 4:
+        digit[4] = set(encoded_digit)
+        dig1478 += 1
+
+    elif dl == 7:
+        digit[8] = set(encoded_digit)
+        dig1478 += 1
+
+segment['up'] = digit[7] - digit[1]
+
+# Find crucial segments
+for encoded_digit in test_signal:
+    dl = len(encoded_digit)
+    if dl == 6:
+        s = (digit[8] - set(encoded_digit)) & digit[1]
+        if s != 0:
+            segment['ur'] = s
+
+# for encoded_digit in test_signal:
+#     dl = len(encoded_digit)
+#     if dl == 6:
+#         s = (digit[8] - set(encoded_digit)) - segment['ul']
+#         if s != 0:
+#             segment['ur'] = s
+
+# segment['mid'] = digit[4] - digit[1] - segment['ul']
+# segment['dr'] = (digit[1] & digit[4] & digit[7]) - segment['ur']
