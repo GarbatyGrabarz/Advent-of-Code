@@ -1,6 +1,7 @@
 """ Avoid vents - finding the spots with most cross-setions """
 
 import pandas
+from matplotlib import pyplot
 
 with open('inputs/input5.txt', 'r') as file:
     vents = file.readlines()
@@ -98,3 +99,21 @@ for column in vent_map:
 
 print(f'\nThe number of dangerous points is {danger_points}')
 print(f'The number of really dangerous points is {real_danger_points}')
+
+fig, _ = pyplot.subplots(1)
+pyplot.axis('off')
+fig.axes[0].imshow(vent_map)
+fig.axes[0].patch.set_alpha(0.01)
+fig.savefig(
+    'Vent map.png',
+    dpi=600,
+    bbox_inches='tight',
+    transparent=True)
+
+fig.axes[0].imshow(vent_map_mkII)
+fig.axes[0].patch.set_alpha(0.01)
+fig.savefig(
+    'Vent map mk II.png',
+    dpi=600,
+    bbox_inches='tight',
+    transparent=True)
