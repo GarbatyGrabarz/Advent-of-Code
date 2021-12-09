@@ -1,4 +1,4 @@
-""" Playing bingo with a squid """
+""" Playing bingo with a squid - checking winning bingo boards"""
 
 import pandas
 import numpy

@@ -1,4 +1,4 @@
-""" Avoid vents """
+""" Avoid vents - finding the spots with most cross-setions """
 
 import pandas
 

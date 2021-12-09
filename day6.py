@@ -1,3 +1,4 @@
+""" Modeling lantern fish growth """
 import csv
 
 

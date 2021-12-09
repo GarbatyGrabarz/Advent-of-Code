@@ -1,3 +1,5 @@
+""" Investigating scrabled 7-segment screen signal """
+
 with open('inputs/input8.txt', 'r') as input_file:
     input_data = input_file.read().splitlines()
 input_data = [entry.split(' | ') for entry in input_data]

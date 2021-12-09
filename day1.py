@@ -1,4 +1,4 @@
-""" Submarine depth analysis """
+""" Submarine depth analysis - finding number of changes """
 
 import pandas
 

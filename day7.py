@@ -1,3 +1,4 @@
+""" Aligning crabs - calculating power consumption """
 import csv
 import statistics
 

@@ -1,4 +1,4 @@
-""" Running diagnostics """
+""" Running diagnostics - analysis of a signel bit-by-bit"""
 
 import pandas
 
