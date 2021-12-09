@@ -62,7 +62,7 @@ class submarine_mkII(submarine):
 
 
 instructions = pandas.read_csv(
-    r'inputs/input2',
+    r'inputs/input2.txt',
     names=['command', 'value'],
     delimiter=' ')
 

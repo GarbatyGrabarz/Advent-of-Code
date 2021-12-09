@@ -3,7 +3,7 @@
 import pandas
 
 # Loading input
-with open(r'inputs/input1', 'r') as file:
+with open(r'inputs/input1.txt', 'r') as file:
     input = file.readlines()
 
 sonar_data = pandas.DataFrame(input, columns=['depth'])
