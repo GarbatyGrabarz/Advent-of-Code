@@ -61,6 +61,14 @@ for point in minima:
 
 print(f'The risk level of the smoke is {risk_level}')
 
+basin_map = data < 9  # Making a mask of elements smaller than 9
+labels, labels_number = scipy.ndimage.label(basin_map)
+sizes = scipy.ndimage.sum(basin_map, labels, range(labels_number + 1))
+sizes.sort()
+Three_largest_basins = int(sizes[-3] * sizes[-2] * sizes[-1])
+
+print(f'The size of three largest basins multipled is {Three_largest_basins}')
+
 fig, _ = pyplot.subplots(1)
 pyplot.axis('off')
 fig.axes[0].imshow(data)
@@ -71,13 +79,6 @@ fig.savefig(
     bbox_inches='tight',
     transparent=True)
 
-
-basin_map = data < 9  # Making a mask of elements smaller than 9
-labels, labels_number = scipy.ndimage.label(basin_map)
-sizes = scipy.ndimage.sum(basin_map, labels, range(labels_number + 1))
-sizes.sort()
-Three_largest_basins = int(sizes[-3] * sizes[-2] * sizes[-1])
-
 fig2, _ = pyplot.subplots(1)
 pyplot.axis('off')
 fig2.axes[0].imshow(labels)
@@ -87,5 +88,3 @@ fig2.savefig(
     dpi=600,
     bbox_inches='tight',
     transparent=True)
-
-print(f'The size of three largest basins multipled is {Three_largest_basins}')
