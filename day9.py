@@ -2,6 +2,7 @@
 
 import numpy
 from matplotlib import pyplot
+import scipy
 
 with open('inputs/input9.txt', 'r') as file:
     input_data = file.read().splitlines()
@@ -12,7 +13,6 @@ for row in input_data:
     data.append(list(line))
 data = numpy.array(data)
 
-pyplot.imshow(data)
 max_x = data.shape[1]
 max_y = data.shape[0]
 minima = list()
@@ -66,17 +66,26 @@ pyplot.axis('off')
 fig.axes[0].imshow(data)
 fig.axes[0].patch.set_alpha(0.01)
 fig.savefig(
-    'Smoke map.png',
+    'Images/Smoke map.png',
     dpi=600,
     bbox_inches='tight',
     transparent=True)
 
-an_array = numpy.where(data > 8, numpy.nan, data)
 
-fig.axes[0].imshow(an_array)
-fig.axes[0].patch.set_alpha(0.01)
-fig.savefig(
-    'Smoke map 2.png',
+basin_map = data < 9  # Making a mask of elements smaller than 9
+labels, labels_number = scipy.ndimage.label(basin_map)
+sizes = scipy.ndimage.sum(basin_map, labels, range(labels_number + 1))
+sizes.sort()
+Three_largest_basins = int(sizes[-3] * sizes[-2] * sizes[-1])
+
+fig2, _ = pyplot.subplots(1)
+pyplot.axis('off')
+fig2.axes[0].imshow(labels)
+fig2.axes[0].patch.set_alpha(0.01)
+fig2.savefig(
+    'Images/Basin map.png',
     dpi=600,
     bbox_inches='tight',
     transparent=True)
+
+print(f'The size of three largest basins multipled is {Three_largest_basins}')
