@@ -105,7 +105,7 @@ pyplot.axis('off')
 fig.axes[0].imshow(vent_map)
 fig.axes[0].patch.set_alpha(0.01)
 fig.savefig(
-    'Vent map.png',
+    'Images/Vent map.png',
     dpi=600,
     bbox_inches='tight',
     transparent=True)
@@ -113,7 +113,7 @@ fig.savefig(
 fig.axes[0].imshow(vent_map_mkII)
 fig.axes[0].patch.set_alpha(0.01)
 fig.savefig(
-    'Vent map mk II.png',
+    'Images/Vent map mk II.png',
     dpi=600,
     bbox_inches='tight',
     transparent=True)
