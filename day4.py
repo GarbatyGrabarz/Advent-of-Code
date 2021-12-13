@@ -44,15 +44,17 @@ class bingo_module(object):
                 break
 
 
-with open('Inputs/input4num.txt', 'r') as input_file:
-    lucky_numbers = input_file.readlines()
-lucky_numbers = lucky_numbers[0].split(',')
+with open('Inputs/input4.txt', 'r') as input_file:
+    lucky_numbers = input_file.readline()
+lucky_numbers = lucky_numbers.replace('\n', '').split(',')
 lucky_numbers = [int(x) for x in lucky_numbers]
 
 # Load boards
-with open('Inputs/input4brd.txt', 'r') as input_file:
+with open('Inputs/input4.txt', 'r') as input_file:
+    _ = input_file.readline()
+    _ = input_file.readline()
     bingo_lines = input_file.readlines()
-bingo_lines = [ln.replace('\n', '') for ln in bingo_lines if ln != '\n']
+bingo_lines = [ln for ln in bingo_lines if ln != '\n']
 
 brdnum = count(1)
 boards = dict()
